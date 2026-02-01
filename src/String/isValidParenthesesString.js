@@ -14,7 +14,7 @@ const isValidStringPair = (string) => {
 
   for (const char of string) {
     if (char in pairs) {
-      if (pairs[char] !== stack.pop()) {
+      if (stack.pop !== pairs[char]) {
         return false;
       }
     } else if (Object.values(pairs).includes(char)) {
@@ -26,4 +26,4 @@ const isValidStringPair = (string) => {
 };
 
 const isValid = isValidStringPair("()[string]{}");
-console.log(isValid);
+console.log("Valid Parentheses String: ",isValid);
