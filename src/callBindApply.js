@@ -25,3 +25,7 @@ displayNameUsingBindMethod();
 // Bind Method used on console.log
 const log = console.log.bind(document);
 log("Hello World");
+
+// It is one and same
+const logMethod = (msg) => console.log(msg);
+logMethod("Hello World");

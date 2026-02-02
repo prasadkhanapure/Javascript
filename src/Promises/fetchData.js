@@ -1,8 +1,8 @@
-const fetchData = () => {
+const fetchDataChaining = () => {
   try {
     fetch("https://jsonplaceholder.typicode.com/todos")
-      .then((mayur) => {
-        return mayur.json();
+      .then((response) => {
+        return response.json();
       })
       .then((result) => {
         console.log(result);
@@ -15,12 +15,12 @@ const fetchData = () => {
 const fetchDataUsingAsyncAwait = async () => {
   const response = await fetch("https://jsonplaceholder.typicode.com/todos");
   if (response.ok) {
-    let res = await response.json();
-    console.log(res);
+    let result = await response.json();
+    console.log(result);
   } else {
-    alert("HTTP-Error: " + response.status);
+    console.log("HTTP-Error: " + response.status);
   }
 };
 
-fetchData();
+fetchDataChaining();
 fetchDataUsingAsyncAwait();
