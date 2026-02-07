@@ -22,3 +22,11 @@ const updatePerson = (person) => {
 
 const newPerson = updatePerson(person);
 console.log(newPerson);
+
+// Object equality
+const a = { x: 1 };
+const b = { x: 1 };
+const c = a; // object assigns reference where it stored to other object
+
+console.log(a === b); // false
+console.log(a === c); // true
