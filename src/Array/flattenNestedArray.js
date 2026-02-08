@@ -9,8 +9,23 @@ const flattenUsingFlatMethod = (array) => {
 
 flattenUsingFlatMethod(array);
 
-// Without .flat() method
-const flattenArray = (array) => {
+// Without .flat() method with for-of iteration
+const flattenRecursiveForIteration = (array) => {
+  const latestArray = [];
+  for (let item of array) {
+    if (Array.isArray(item)) {
+      latestArray.push(...flatten(item));
+    } else {
+      latestArray.push(item);
+    }
+  }
+  return latestArray;
+};
+const flatArrayRecursionWithForOf = flattenRecursiveForIteration([1, [2, [3, 4], 5], 6]);
+console.log(flatArrayRecursionWithForOf);
+
+// Without .flat() method 7 with reduce method
+const flattenWithRecursionUsingReduce = (array) => {
   const newArray = array.reduce((acc, element) => {
     if (Array.isArray(element)) {
       acc.push(...flattenArray(element));
@@ -26,8 +41,8 @@ const flattenArray = (array) => {
   return newArray;
 };
 
-const flatArrayWithoutFlatMethod = flattenArray(array);
-console.log(flatArrayWithoutFlatMethod);
+const flatArrayWithoutFlatRecursion = flattenWithRecursionUsingReduce(array);
+console.log(flatArrayWithoutFlatRecursion);
 
 // Without .flat() & recursive method. ie., using stack
 const flattenWithoutRecursion = (array) => {
